@@ -28,7 +28,7 @@ function writePassword() {
 
 
 // WHEN prompted for the length of the password: THEN I choose a length of at least 8 characters and no more than 128 characters
-prompt("How many characters in length would you like your password to be (choose between 8 and 128 characters in length)? ");
+prompt("how many characters in length would you like your password to be?     (choose between 8 and 128 characters in length)");
 
 // WHEN prompted for character types to include in the password: THEN I choose lowercase, uppercase, numeric, and/or special characters
 
