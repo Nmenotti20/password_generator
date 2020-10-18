@@ -1,7 +1,7 @@
 # password_generator
 JavaScript HW - Password Generator
 
-
+I am so confused I have no idea what I am doing in JavaScript.
 
 
 Browser Character Set
