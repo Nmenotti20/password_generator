@@ -2,14 +2,18 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword(passwordText) {
+
+function writePassword() {
+  const password = [];
+  let chosenCharacters = [];
+    
 
   // var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  var valueLowercase = ["qwertyuiopasdfghjklzxcvbnm"]; 
-  var valueUppercase = ["QWERTYUIOPASDFGHJKLZXCVBNM"];
-  var valueCharacters = ["~!@#$%^&*()_+`-={}|[]\:;<,>.?/"];
-  var valueNumbers = ["0123456789"];
+  var valueLowercase = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"]; 
+  var valueUppercase = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
+  var valueCharacters = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "`", "-", "=", "{", "}", "|", "[", "]", ":", ";", "<", ">", "?", "/"];
+  var valueNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var characterBase = []; 
   var charLength = parseInt(prompt("Enter a number between 8 and 128 for how many characters in length you want your password to be. "));
 
@@ -31,51 +35,46 @@ var uppercase = confirm("Click OK if you want uppercase letters in your password
 var characters = confirm("Click OK if you want special characters in your password. ");
 var numbers = confirm("Click OK if you want numbers in your password. ");
 
+
+
+
+
 // WHEN I answer each prompt: THEN my input should be validated and at least one character type should be selected
 
 //IF ELSE LOWERCASE
 if (lowercase) {
-  characterBase.push(valueLowercase);
-  console.log(valueLowercase);
-  console.log(characterBase);  
+  chosenCharacters = chosenCharacters.concat(lowercase);
 }
 
-else {
-  return;
-}
 
 //IF ELSE UPPERCASE
 if (uppercase) {
-  characterBase.push(valueUppercase);
-  console.log(valueUppercase);
-  console.log(characterBase);  
-}
-
-else {
-  return;
+  chosenCharacters = chosenCharacters.concat(uppercase);
 }
 
 //IF ELSE CHARACTERS
 if (characters) {
-  characterBase.push(valueCharacters);
-  console.log(valueCharacters);
-  console.log(characterBase);  
-}
-
-else {
-  return;
+  chosenCharacters = chosenCharacters.concat(characters);
 }
 
 //IF ELSE NUMBERS 
 if (numbers) {
-  characterBase.push(valueNumbers);
-  console.log(valueNumbers);
-  console.log(characterBase);  
+  chosenCharacters = chosenCharacters.concat(numbers);
 }
+console.log(chosenCharacters);
 
-else {
-  return;
-}
+
+//LOOP THROUGH NEW ARRAY WITH chosenCharacters and picks 10 elements randomly
+for (i=0; i<charLength; i++) {
+  var randomChar = chosenCharacters[Math.floor(Math.random() * chosenCharacters.length)];
+  password.push(randomChar);
+};
+
+//UPDATE NEW PASSWORD TO TEXT BOX ON HTML
+document.querySelector("#password").value = password.join("");
+
+
+
 
 // WHEN all prompts are answered: THEN a password is generated that matches the selected criteria
 
